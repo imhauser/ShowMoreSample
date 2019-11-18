@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div id="content">
+        
+
+    </div>
+    <input type="button" value="Load More" onclick="loadMore()" />
+</div>
+
+
+<script type="text/javascript">
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var element = document.getElementById('content');
+            element.innerHTML = element.innerHTML + xhttp.responseText;
+        }
+    };
+
+    var start = 0;
+    var length = 5;
+
+    function loadMore() {
+        xhttp.open("GET", "/home/part?start=" + start + "&length=" + length, true);
+        xhttp.send();
+        start += length;
+    }
+
+
+    loadMore();
+
+
+</script>

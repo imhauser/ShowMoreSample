@@ -1,0 +1,10 @@
+﻿@model List<(string FirstName, string Surname)>
+@{ 
+    this.Layout = null;
+}
+@foreach (var item in Model)
+{ 
+    <div>
+        <div>@item.FirstName @item.Surname</div>
+    </div>
+}
