@@ -9,6 +9,7 @@
 
     </div>
     <input type="button" value="Load More" onclick="loadMore()" />
+    <div id="rowcount"></div>
 </div>
 
 
@@ -18,6 +19,10 @@
         if (this.readyState == 4 && this.status == 200) {
             var element = document.getElementById('content');
             element.innerHTML = element.innerHTML + xhttp.responseText;
+
+            var nodes = element.querySelectorAll('[data-row]');
+            var last = nodes[nodes.length - 1];
+            document.getElementById('rowcount').innerHTML = last.getAttribute("data-text");
         }
     };
 

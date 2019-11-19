@@ -1,10 +1,17 @@
 ﻿@model List<(string FirstName, string Surname)>
-@{ 
+@{
     this.Layout = null;
+    int start = ViewBag.Start;
+    int total = ViewBag.Total;
+
+
 }
 @foreach (var item in Model)
-{ 
-    <div>
+{
+    start++;
+    <div data-row="@start" data-text="@start out of @total  displayed">
         <div>@item.FirstName @item.Surname</div>
     </div>
 }
+
+

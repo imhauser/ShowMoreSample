@@ -25,7 +25,10 @@ namespace ShowMoreSample.Controllers
 
         public IActionResult Part(int start, int length)
         {
+            var total = GetData().Count;
             var model = GetData().Skip(start).Take(length).ToList();
+            ViewBag.Start = start;
+            ViewBag.Total = total;
             return View(model);
         }
 
